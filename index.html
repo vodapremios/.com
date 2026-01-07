@@ -17,16 +17,21 @@
             --red-dark: #e0003a;
             --red-light: #ff6b8b;
             --red-gradient: linear-gradient(135deg, #ff3b5c 0%, #e0003a 100%);
+            --gold: #ffd700;
+            --silver: #c0c0c0;
+            --bronze: #cd7f32;
             --bg-gray: #f8fafc;
             --text-dark: #1e293b;
             --text-light: #64748b;
             --card-bg: #ffffff;
             --border-color: #e2e8f0;
             --success: #10b981;
+            --warning: #f59e0b;
             --error: #ef4444;
             --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
             --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 20px 60px rgba(255, 59, 92, 0.15);
+            --shadow-gold: 0 10px 40px rgba(255, 215, 0, 0.3);
             --radius-sm: 12px;
             --radius-md: 16px;
             --radius-lg: 24px;
@@ -40,6 +45,7 @@
             align-items: center;
             padding: 20px;
             color: var(--text-dark);
+            overflow-x: hidden;
         }
         
         .container {
@@ -111,6 +117,218 @@
             opacity: 0.9;
             font-weight: 400;
             margin-top: 8px;
+        }
+        
+        /* ANÚNCIOS DE PRÊMIOS - CARROSSEL */
+        .prize-carousel {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            color: white;
+        }
+        
+        .prize-carousel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .carousel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .carousel-title {
+            font-size: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .trophy-icon {
+            color: var(--gold);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .carousel-indicators {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        
+        .carousel-slide {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .prize-amount {
+            font-size: 42px;
+            font-weight: 900;
+            margin: 10px 0;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .prize-description {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+        
+        .winner-info {
+            font-size: 14px;
+            opacity: 0.8;
+            font-style: italic;
+        }
+        
+        .winner-name {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        .timer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-top: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .timer-number {
+            font-weight: 700;
+            color: #ffd700;
+        }
+        
+        /* ANÚNCIOS EM TEMPO REAL */
+        .live-announcements {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            color: white;
+            max-height: 200px;
+            overflow-y: hidden;
+        }
+        
+        .announcements-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .announcements-title {
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .live-badge {
+            background: #ef4444;
+            color: white;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .announcements-list {
+            position: relative;
+            height: 140px;
+            overflow: hidden;
+        }
+        
+        .announcement-item {
+            position: absolute;
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .announcement-item.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .announcement-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .announcement-icon {
+            font-size: 20px;
+            color: var(--gold);
+        }
+        
+        .announcement-text {
+            flex: 1;
+        }
+        
+        .announcement-amount {
+            font-weight: 700;
+            color: #ffd700;
         }
         
         /* Cartão Principal */
@@ -309,11 +527,187 @@
             font-size: 20px;
         }
         
+        /* Mini Cards de Prêmios */
+        .prize-mini-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 24px 0;
+        }
+        
+        .prize-mini-card {
+            background: white;
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .prize-mini-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+            border-color: var(--gold);
+        }
+        
+        .prize-mini-card.gold {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, #fff9db, #fff3bf);
+        }
+        
+        .prize-mini-card.silver {
+            border-color: var(--silver);
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+        
+        .prize-mini-card.bronze {
+            border-color: var(--bronze);
+            background: linear-gradient(135deg, #fff4e6, #ffe8cc);
+        }
+        
+        .prize-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .prize-mini-card.gold .prize-icon {
+            color: var(--gold);
+        }
+        
+        .prize-mini-card.silver .prize-icon {
+            color: var(--silver);
+        }
+        
+        .prize-mini-card.bronze .prize-icon {
+            color: var(--bronze);
+        }
+        
+        .prize-mini-amount {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        
+        .prize-mini-desc {
+            font-size: 11px;
+            color: var(--text-light);
+        }
+        
+        /* Processamento Modal */
+        .processing-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .processing-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            animation: slideUp 0.5s ease;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .processing-icon {
+            font-size: 64px;
+            color: var(--primary-red);
+            margin-bottom: 24px;
+            animation: spin 1s linear infinite;
+        }
+        
+        .processing-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+        
+        .processing-message {
+            color: var(--text-light);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        
+        .processing-steps {
+            text-align: left;
+            margin: 24px 0;
+            padding: 20px;
+            background: var(--bg-gray);
+            border-radius: var(--radius-sm);
+        }
+        
+        .processing-step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+        
+        .step-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--success);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .processing-countdown {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-red);
+            margin: 20px 0;
+        }
+        
+        .whatsapp-redirect-btn {
+            width: 100%;
+            padding: 16px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-redirect-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+        
         /* Info Cards Modernos */
         .info-grid {
             display: grid;
             gap: 16px;
-            margin-top: 32px;
+            margin-top: 24px;
         }
         
         .info-card {
@@ -383,30 +777,6 @@
             font-weight: 500;
         }
         
-        /* Loading Moderno */
-        .loading {
-            text-align: center;
-            padding: 40px 20px;
-            border-radius: var(--radius-md);
-            background: white;
-            display: none;
-        }
-        
-        .spinner {
-            width: 48px;
-            height: 48px;
-            border: 3px solid var(--border-color);
-            border-top-color: var(--primary-red);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-        
-        .loading p {
-            color: var(--text-light);
-            font-weight: 500;
-        }
-        
         /* Responsividade */
         @media (max-width: 480px) {
             .container {
@@ -419,12 +789,25 @@
                 margin-bottom: 20px;
             }
             
+            .prize-carousel {
+                padding: 20px;
+                border-radius: var(--radius-md);
+            }
+            
+            .live-announcements {
+                padding: 12px;
+            }
+            
             .card {
                 padding: 24px;
                 border-radius: var(--radius-md);
             }
             
-            .amount-grid {
+            .processing-content {
+                padding: 24px;
+            }
+            
+            .amount-grid, .prize-mini-cards {
                 grid-template-columns: repeat(2, 1fr);
             }
             
@@ -435,8 +818,12 @@
         }
         
         @media (max-width: 360px) {
-            .amount-grid {
+            .amount-grid, .prize-mini-cards {
                 grid-template-columns: 1fr;
+            }
+            
+            .prize-amount {
+                font-size: 32px;
             }
         }
     </style>
@@ -451,7 +838,98 @@
                 <div class="logo-text">VodaPrêmios</div>
             </div>
             <h1>Raspadinhas Digitais</h1>
-            <p class="tagline">Ganhe instantaneamente com sorteios 24/7</p>
+            <p class="tagline">Ganhe instantaneamente com sorteios</p>
+        </div>
+        
+        <!-- ANÚNCIOS EM TEMPO REAL -->
+        <div class="live-announcements">
+            <div class="announcements-header">
+                <div class="announcements-title">
+                    <i class="fas fa-broadcast-tower"></i>
+                    GANHOS AO VIVO
+                    <span class="live-badge">AO VIVO</span>
+                </div>
+                <i class="fas fa-fire" style="color: #ff6b6b;"></i>
+            </div>
+            <div class="announcements-list" id="announcementsList">
+                <!-- Anúncios serão gerados dinamicamente -->
+            </div>
+        </div>
+        
+        <!-- ANÚNCIOS DE PRÊMIOS - CARROSSEL -->
+        <div class="prize-carousel">
+            <div class="carousel-header">
+                <div class="carousel-title">
+                    <i class="fas fa-trophy trophy-icon"></i>
+                    PRÊMIOS RECENTES
+                </div>
+                <div class="carousel-indicators" id="carouselIndicators">
+                    <div class="indicator active" data-slide="0"></div>
+                    <div class="indicator" data-slide="1"></div>
+                    <div class="indicator" data-slide="2"></div>
+                </div>
+            </div>
+            
+            <div class="carousel-slide active" id="slide0">
+                <div class="prize-amount">50.000 MT</div>
+                <div class="prize-description">Prêmio máximo da semana</div>
+                <div class="winner-info">
+                    Ganhador: <span class="winner-name">Carlos M.</span> - Maputo
+                </div>
+                <div class="timer">
+                    <i class="fas fa-clock"></i>
+                    Próximo sorteio em: <span class="timer-number" id="timer">23:45:12</span>
+                </div>
+            </div>
+            
+            <div class="carousel-slide" id="slide1" style="display: none;">
+                <div class="prize-amount">25.000 MT</div>
+                <div class="prize-description">Prêmio do dia</div>
+                <div class="winner-info">
+                    Ganhadora: <span class="winner-name">Ana S.</span> - Beira
+                </div>
+                <div class="prize-description">
+                    Com apenas 100 MT em raspadinhas
+                </div>
+            </div>
+            
+            <div class="carousel-slide" id="slide2" style="display: none;">
+                <div class="prize-amount">10.000 MT</div>
+                <div class="prize-description">3 ganhadores hoje</div>
+                <div class="winner-info">
+                    Maria J. (500 MT) • João P. (200 MT) • Sofia K. (100 MT)
+                </div>
+                <div class="prize-description">
+                    Sua chance pode ser agora
+                </div>
+            </div>
+        </div>
+        
+        <!-- MINI CARDS DE PRÊMIOS -->
+        <div class="prize-mini-cards">
+            <div class="prize-mini-card gold">
+                <div class="prize-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="prize-mini-amount">50K MT</div>
+                <div class="prize-mini-desc">Prêmio Máximo</div>
+            </div>
+            
+            <div class="prize-mini-card silver">
+                <div class="prize-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <div class="prize-mini-amount">25K MT</div>
+                <div class="prize-mini-desc">Prêmio do Dia</div>
+            </div>
+            
+            <div class="prize-mini-card bronze">
+                <div class="prize-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <div class="prize-mini-amount">100-5K MT</div>
+                <div class="prize-mini-desc">Prêmios Instantâneos</div>
+            </div>
         </div>
         
         <!-- Cartão Principal -->
@@ -468,6 +946,8 @@
                     <select id="operator" class="form-control" required>
                         <option value="">Selecione sua operadora</option>
                         <option value="vodacom" selected>Vodacom</option>
+                        <option value="movitel">Movitel</option>
+                        <option value="tmcel">Tmcel</option>
                     </select>
                 </div>
                 
@@ -489,7 +969,7 @@
                         Digite exatamente 9 dígitos numéricos
                     </div>
                     <div style="color: var(--text-light); font-size: 13px; margin-top: 6px;">
-                        Digite 9 dígitos (84 ou 85
+                        Digite 9 dígitos (84 ou 85)
                     </div>
                 </div>
                 
@@ -530,18 +1010,11 @@
                 
                 <!-- Botão de Submissão -->
                 <button type="submit" class="submit-btn" id="submitBtn">
-                    <i class="fab fa-whatsapp whatsapp-icon"></i>
-                    Continuar no WhatsApp
+                    <i class="fas fa-play-circle"></i>
+                    Processar Pedido
                     <i class="fas fa-arrow-right"></i>
                 </button>
             </form>
-            
-            <!-- Loading (mantido escondido até clique no WhatsApp) -->
-            <div class="loading hidden" id="loading">
-                <div class="spinner"></div>
-                <p>Abrindo WhatsApp...</p>
-                <p style="font-size: 12px; margin-top: 8px;">Redirecionando para aplicativo</p>
-            </div>
             
             <!-- Informações -->
             <div class="info-grid">
@@ -549,17 +1022,20 @@
                     <h3><i class="fas fa-play-circle"></i> Como Funciona</h3>
                     <ul>
                         <li>Preencha os dados acima</li>
-                        <li>Será redirecionado para nosso WhatsApp</li>
+                        <li>Processaremos seu pedido localmente</li>
+                        <li>Redirecionamento automático para WhatsApp</li>
                         <li>Escolha o método de pagamento</li>
-                        <li>Envie o comprovativo</li>
                         <li>Receba sua raspadinha em 5-10 minutos</li>
                     </ul>
                 </div>
                 
                 <div class="info-card">
-                    <h3><i class="fas fa-credit-card"></i> Método de Pagamento</h3>
+                    <h3><i class="fas fa-shield-alt"></i> Segurança e Confiança</h3>
                     <ul>
-                        <li><strong>M-Pesa</strong> </li>
+                        <li>Processamento local seguro</li>
+                        <li>Transações verificadas</li>
+                        <li>Entrega rápida garantida</li>
+                        <li>Suporte 24h disponível</li>
                     </ul>
                 </div>
             </div>
@@ -569,7 +1045,7 @@
                 <div class="contact-info">
                     <div class="contact-item">
                         <i class="fas fa-clock" style="color: var(--primary-red);"></i>
-                        7h00 - 20h00 (Todos os dias)
+                        7h00 - 24h00 (Todos os dias)
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone-alt" style="color: var(--primary-red);"></i>
@@ -583,19 +1059,292 @@
             </div>
         </div>
     </div>
+    
+    <!-- Modal de Processamento -->
+    <div class="processing-modal" id="processingModal">
+        <div class="processing-content">
+            <div class="processing-icon">
+                <i class="fas fa-cog"></i>
+            </div>
+            <h2 class="processing-title">Processando seu Pedido</h2>
+            <p class="processing-message">
+                Estamos preparando sua raspadinha digital e gerando sua referência única.
+            </p>
+            
+            <div class="processing-steps">
+                <div class="processing-step">
+                    <div class="step-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <span>Verificando dados do pedido</span>
+                </div>
+                <div class="processing-step">
+                    <div class="step-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <span>Gerando referência única</span>
+                </div>
+                <div class="processing-step">
+                    <div class="step-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <span>Criando cupom de raspadinha</span>
+                </div>
+                <div class="processing-step">
+                    <div class="step-icon" id="step4">
+                        4
+                    </div>
+                    <span>Preparando WhatsApp para pagamento</span>
+                </div>
+            </div>
+            
+            <div class="processing-countdown" id="countdown">5</div>
+            
+            <button class="whatsapp-redirect-btn" id="whatsappRedirectBtn" style="display: none;">
+                <i class="fab fa-whatsapp"></i>
+                Abrir WhatsApp Agora
+            </button>
+            
+            <div style="font-size: 12px; color: var(--text-light); margin-top: 16px;">
+                <i class="fas fa-lock"></i> Processamento 100% local e seguro
+            </div>
+        </div>
+    </div>
 
     <script>
-        // Elementos do DOM
+        // ==============================
+        // BANCO DE DADOS DE ANÚNCIOS INFINITOS
+        // ==============================
+        const announcementsData = [
+            {
+                icon: 'trophy',
+                text: '<span class="winner-name"> Ernesto M.</span> ganhou <span class="announcement-amount">3.500 MT</span>',
+                time: 'Há 2 minutos'
+            },
+            {
+                icon: 'coins',
+                text: '<span class="winner-name">Maria S.</span> ganhou <span class="announcement-amount">2.500 MT</span>',
+                time: 'Há 5 minutos'
+            },
+            {
+                icon: 'gift',
+                text: '<span class="winner-name">Carlos P.</span> ganhou <span class="announcement-amount">2.000 MT</span>',
+                time: 'Há 8 minutos'
+            },
+            {
+                icon: 'star',
+                text: 'Nova raspadinha de <span class="announcement-amount">100 MT</span> premiada',
+                time: 'Há 12 minutos'
+            },
+            {
+                icon: 'crown',
+                text: '<span class="winner-name">Sofia K.</span> ganhou <span class="announcement-amount">1.000 MT</span>',
+                time: 'Há 15 minutos'
+            },
+            {
+                icon: 'medal',
+                text: '3 raspadinhas premiadas em sequência!',
+                time: 'Há 18 minutos'
+            },
+            {
+                icon: 'bolt',
+                text: '<span class="winner-name">Pedro L.</span> ganhou <span class="announcement-amount">300 MT</span>',
+                time: 'Há 22 minutos'
+            },
+            {
+                icon: 'gem',
+                text: 'Prêmio acumulado: <span class="announcement-amount">4.000 MT</span>',
+                time: 'Há 25 minutos'
+            }
+        ];
+        
+        // Adicionar mais anúncios gerados automaticamente
+        function generateRandomAnnouncement() {
+            const cities = ['Maputo', 'Beira', 'Nampula', 'Matola', 'Chimoio', 'Quelimane', 'Tete', 'Xai-Xai'];
+            const names = ['Claudio', 'João', 'Maria', 'Carlos', 'Pedro', 'Sofia', 'Ivandro', 'Luísa', 'António', 'Teresa'];
+            const amounts = [150, 350, 200, 400, 90, 1500, 3000];
+            const verbs = ['ganhou', 'ganhou', 'ganhou', 'ganhou', 'ganhou'];
+            
+            const randomCity = cities[Math.floor(Math.random() * cities.length)];
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomAmount = amounts[Math.floor(Math.random() * amounts.length)];
+            const randomVerb = verbs[Math.floor(Math.random() * verbs.length)];
+            
+            return {
+                icon: ['trophy', 'coins', 'gift', 'star', 'crown', 'medal', 'bolt', 'gem'][Math.floor(Math.random() * 8)],
+                text: `<span class="winner-name">${randomName} ${randomCity.charAt(0)}.</span> ${randomVerb} <span class="announcement-amount">${randomAmount.toLocaleString('pt-MZ')} MT</span>`,
+                time: `Há ${Math.floor(Math.random() * 30) + 1} minutos`
+            };
+        }
+        
+        // Expandir banco de dados inicial
+        for (let i = 0; i < 20; i++) {
+            announcementsData.push(generateRandomAnnouncement());
+        }
+        
+        // ==============================
+        // SISTEMA DE ANÚNCIOS EM TEMPO REAL
+        // ==============================
+        let currentAnnouncement = 0;
+        let announcementInterval;
+        
+        function initAnnouncements() {
+            const announcementsList = document.getElementById('announcementsList');
+            
+            // Criar elementos para anúncios
+            announcementsData.forEach((announcement, index) => {
+                const announcementElement = document.createElement('div');
+                announcementElement.className = 'announcement-item';
+                announcementElement.id = `announcement-${index}`;
+                
+                announcementElement.innerHTML = `
+                    <div class="announcement-content">
+                        <i class="fas fa-${announcement.icon} announcement-icon"></i>
+                        <div class="announcement-text">
+                            <div>${announcement.text}</div>
+                            <small>${announcement.time}</small>
+                        </div>
+                    </div>
+                `;
+                
+                announcementsList.appendChild(announcementElement);
+            });
+            
+            // Mostrar primeiro anúncio
+            showAnnouncement(currentAnnouncement);
+            
+            // Iniciar ciclo infinito
+            announcementInterval = setInterval(() => {
+                // Adicionar novo anúncio aleatório periodicamente
+                if (Math.random() > 0.7) { // 30% de chance a cada ciclo
+                    const newAnnouncement = generateRandomAnnouncement();
+                    announcementsData.push(newAnnouncement);
+                    
+                    const announcementElement = document.createElement('div');
+                    announcementElement.className = 'announcement-item';
+                    announcementElement.id = `announcement-${announcementsData.length - 1}`;
+                    
+                    announcementElement.innerHTML = `
+                        <div class="announcement-content">
+                            <i class="fas fa-${newAnnouncement.icon} announcement-icon"></i>
+                            <div class="announcement-text">
+                                <div>${newAnnouncement.text}</div>
+                                <small>${newAnnouncement.time}</small>
+                            </div>
+                        </div>
+                    `;
+                    
+                    announcementsList.appendChild(announcementElement);
+                }
+                
+                // Mostrar próximo anúncio
+                showAnnouncement(currentAnnouncement);
+                currentAnnouncement = (currentAnnouncement + 1) % announcementsData.length;
+            }, 4000); // Muda a cada 4 segundos
+        }
+        
+        function showAnnouncement(index) {
+            // Esconder todos os anúncios
+            document.querySelectorAll('.announcement-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Mostrar anúncio atual
+            const currentElement = document.getElementById(`announcement-${index}`);
+            if (currentElement) {
+                currentElement.classList.add('active');
+            }
+        }
+        
+        // ==============================
+        // CARROSSEL DE PRÊMIOS
+        // ==============================
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const totalSlides = slides.length;
+        
+        function goToSlide(slideIndex) {
+            slides.forEach(slide => {
+                slide.style.display = 'none';
+                slide.classList.remove('active');
+            });
+            
+            indicators.forEach(indicator => {
+                indicator.classList.remove('active');
+            });
+            
+            slides[slideIndex].style.display = 'flex';
+            slides[slideIndex].classList.add('active');
+            indicators[slideIndex].classList.add('active');
+            
+            currentSlide = slideIndex;
+        }
+        
+        function startCarousel() {
+            setInterval(() => {
+                let nextSlide = (currentSlide + 1) % totalSlides;
+                goToSlide(nextSlide);
+            }, 5000);
+        }
+        
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                goToSlide(index);
+            });
+        });
+        
+        // ==============================
+        // TIMER DO PRÓXIMO SORTEIO
+        // ==============================
+        function updateTimer() {
+            const timerElement = document.getElementById('timer');
+            
+            const now = new Date();
+            const nextDraw = new Date();
+            nextDraw.setHours(now.getHours() + 3);
+            nextDraw.setMinutes(now.getMinutes() + 15);
+            nextDraw.setSeconds(now.getSeconds() + 30);
+            
+            function tick() {
+                const now = new Date();
+                const diff = nextDraw - now;
+                
+                if (diff <= 0) {
+                    nextDraw.setHours(nextDraw.getHours() + 24);
+                    return;
+                }
+                
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                const formattedHours = hours.toString().padStart(2, '0');
+                const formattedMinutes = minutes.toString().padStart(2, '0');
+                const formattedSeconds = seconds.toString().padStart(2, '0');
+                
+                timerElement.textContent = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+            }
+            
+            tick();
+            setInterval(tick, 1000);
+        }
+        
+        // ==============================
+        // SISTEMA DE PROCESSAMENTO
+        // ==============================
         const rechargeForm = document.getElementById('rechargeForm');
         const amountOptions = document.querySelectorAll('.amount-option');
         const amountInput = document.getElementById('amount');
         const phoneInput = document.getElementById('phone');
         const submitBtn = document.getElementById('submitBtn');
-        const loadingDiv = document.getElementById('loading');
+        const processingModal = document.getElementById('processingModal');
+        const countdownElement = document.getElementById('countdown');
+        const whatsappRedirectBtn = document.getElementById('whatsappRedirectBtn');
         const phoneError = document.getElementById('phoneError');
         const amountError = document.getElementById('amountError');
+        const step4 = document.getElementById('step4');
         
-        // Estado do formulário
         let isFormValid = false;
         let selectedAmount = '';
         
@@ -606,7 +1355,7 @@
                 position: fixed;
                 top: 20px;
                 right: 20px;
-                background: ${type === 'error' ? '#ef4444' : '#10b981'};
+                background: ${type === 'error' ? '#ef4444' : type === 'warning' ? '#f59e0b' : '#10b981'};
                 color: white;
                 padding: 16px 24px;
                 border-radius: 12px;
@@ -621,7 +1370,7 @@
             `;
             
             notification.innerHTML = `
-                <i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'}"></i>
+                <i class="fas fa-${type === 'error' ? 'exclamation-circle' : type === 'warning' ? 'exclamation-triangle' : 'check-circle'}"></i>
                 ${message}
             `;
             
@@ -644,22 +1393,18 @@
                 from { transform: translateX(0); opacity: 1; }
                 to { transform: translateX(100%); opacity: 0; }
             }
+            @keyframes spin {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
         `;
         document.head.appendChild(style);
         
-        // Validação de telefone em tempo real
+        // Validação de telefone
         phoneInput.addEventListener('input', function(e) {
-            // Permitir apenas números
             let value = e.target.value.replace(/\D/g, '');
-            
-            // Limitar a 9 dígitos
-            if (value.length > 9) {
-                value = value.substring(0, 9);
-            }
-            
+            if (value.length > 9) value = value.substring(0, 9);
             e.target.value = value;
-            
-            // Validação
             validatePhone(value);
         });
         
@@ -668,7 +1413,6 @@
             const isValidPrefix = value.startsWith('84') || value.startsWith('85') || value.startsWith('86');
             const isValid = isValidLength && isValidPrefix;
             
-            // Atualizar estilo
             phoneInput.classList.remove('error', 'success');
             phoneError.style.display = 'none';
             
@@ -692,24 +1436,23 @@
         // Seleção de valores
         amountOptions.forEach(option => {
             option.addEventListener('click', function() {
-                // Efeito de clique
                 this.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     this.style.transform = '';
                 }, 150);
                 
-                // Remover active de todos
                 amountOptions.forEach(opt => {
                     opt.classList.remove('active');
                 });
                 
-                // Adicionar active ao selecionado
                 this.classList.add('active');
                 selectedAmount = this.getAttribute('data-value');
                 amountInput.value = selectedAmount;
-                
-                // Remover mensagem de erro
                 amountError.style.display = 'none';
+                
+                if (selectedAmount >= 100) {
+                    showNotification(`Excelente escolha! Prêmios maiores com ${selectedAmount} MT! `, 'success');
+                }
             });
         });
         
@@ -721,7 +1464,6 @@
             
             let isValid = true;
             
-            // Validar operadora
             if (!operator) {
                 isValid = false;
                 document.getElementById('operator').classList.add('error');
@@ -729,13 +1471,11 @@
                 document.getElementById('operator').classList.remove('error');
             }
             
-            // Validar telefone
             const isPhoneValid = validatePhone(phone);
             if (!isPhoneValid) {
                 isValid = false;
             }
             
-            // Validar valor
             if (!amount) {
                 isValid = false;
                 amountError.style.display = 'block';
@@ -743,27 +1483,23 @@
                 amountError.style.display = 'none';
             }
             
-            // Habilitar/desabilitar botão
             submitBtn.disabled = !isValid;
             isFormValid = isValid;
             
             return isValid;
         }
         
-        // Ouvir eventos de input para validação em tempo real
         phoneInput.addEventListener('input', validateForm);
         phoneInput.addEventListener('blur', validateForm);
         
-        // Ouvir mudanças na seleção de valores
         amountOptions.forEach(option => {
             option.addEventListener('click', validateForm);
         });
         
-        // Ouvir mudanças na operadora
         document.getElementById('operator').addEventListener('change', validateForm);
         
-        // Submissão do formulário
-        rechargeForm.addEventListener('submit', function(e) {
+        // PROCESSAMENTO ANTES DO WHATSAPP
+        rechargeForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             if (!isFormValid) {
@@ -773,95 +1509,205 @@
             
             const phone = phoneInput.value;
             const amount = selectedAmount;
+            const operator = document.getElementById('operator').value;
             
-            // Gerar referência
-            const reference = 'VODA-' + Date.now().toString().slice(-6);
+            // Mostrar modal de processamento
+            processingModal.style.display = 'flex';
             
-            // Formatar número para exibição
+            // Gerar referência única
+            const reference = 'VODA-' + Date.now().toString().slice(-8) + Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            
+            // Simular processamento passo a passo
+            simulateProcessing(phone, amount, operator, reference);
+        });
+        
+        // Simulação de processamento
+        async function simulateProcessing(phone, amount, operator, reference) {
+            let countdown = 5;
+            
+            // Atualizar contagem regressiva
+            const countdownInterval = setInterval(() => {
+                countdownElement.textContent = countdown;
+                countdown--;
+                
+                if (countdown < 0) {
+                    clearInterval(countdownInterval);
+                    
+                    // Atualizar passo 4
+                    step4.innerHTML = '<i class="fas fa-check"></i>';
+                    step4.style.background = '#10b981';
+                    
+                    // Mostrar botão do WhatsApp
+                    setTimeout(() => {
+                        whatsappRedirectBtn.style.display = 'flex';
+                        countdownElement.style.display = 'none';
+                        
+                        // Configurar redirecionamento para WhatsApp
+                        whatsappRedirectBtn.onclick = () => {
+                            redirectToWhatsApp(phone, amount, operator, reference);
+                        };
+                        
+                        // Redirecionamento automático após 10 segundos
+                        setTimeout(() => {
+                            redirectToWhatsApp(phone, amount, operator, reference);
+                        }, 10000);
+                        
+                    }, 1000);
+                }
+            }, 1000);
+            
+            // Simular etapas de processamento
+            const steps = document.querySelectorAll('.processing-step');
+            steps.forEach((step, index) => {
+                setTimeout(() => {
+                    if (index < 3) {
+                        step.querySelector('.step-icon').innerHTML = '<i class="fas fa-check"></i>';
+                        step.querySelector('.step-icon').style.background = '#10b981';
+                    }
+                }, (index + 1) * 800);
+            });
+        }
+        
+        // Redirecionar para WhatsApp
+        function redirectToWhatsApp(phone, amount, operator, reference) {
             const formattedPhone = phone.replace(/(\d{2})(\d{3})(\d{4})/, '$1 $2 $3');
+            const whatsappNumber = "258858867098";
             
-            // Criar mensagem para WhatsApp
-            const message = `*🎰 NOVO PEDIDO - VODAPRÊMIOS*%0A%0A` +
-                           `*📋 DETALHES DO PEDIDO*%0A` +
-                           `• Referência: #${reference}%0A` +
-                           `• Operadora: Vodacom MZ%0A` +
-                           `• Número: ${formattedPhone}%0A` +
-                           `• Valor: ${amount} MZN%0A` +
-                           `• Data: ${new Date().toLocaleString('pt-MZ')}%0A%0A` +
-                           `*💳 MÉTODOS DE PAGAMENTO*%0A` +
-                           `Escolha um método abaixo:%0A` +
-                           `1️⃣ *M-Pesa*%0A` +
+            // Gerar probabilidade de ganho baseada no valor
+            let chanceText = '';
+            if (amount >= 500) {
+                chanceText = ' *ALTA PROBABILIDADE DE GANHO* (60% de chance)';
+            } else if (amount >= 100) {
+                chanceText = '✨ *BOAS CHANCES* (40% de chance)';
+            } else {
+                chanceText = '⭐ *CHANCE REGULAR* (25% de chance)';
+            }
+            
+            const message = `* NOVO PEDIDO - VODAPRÊMIOS*%0A%0A` +
+                           `* DETALHES DO PEDIDO*%0A` +
+                           `•  Referência: #${reference}%0A` +
+                           `•  Operadora: ${operator.toUpperCase()}%0A` +
+                           `•  Número: ${formattedPhone}%0A` +
+                           `•  Valor: ${amount} MT%0A` +
+                           `•  Data: ${new Date().toLocaleString('pt-MZ')}%0A%0A` +
+                           `${chanceText}%0A%0A` +
+                           `* PRÊMIOS DISPONÍVEIS*%0A` +
+                           `•  50.000 MT (Prêmio Máximo)%0A` +
+                           `•  25.000 MT (Prêmio do Dia)%0A` +
+                           `•  100-5.000 MT (Instantâneos)%0A%0A` +
+                           `* MÉTODOS DE PAGAMENTO*%0A` +
+                           `Escolha um método:%0A` +
+                           `1️⃣ *M-Pesa* (Vodacom)%0A` +
                            `2️⃣ *E-Mola*%0A` +
                            `3️⃣ *Depósito Bancário*%0A` +
                            `4️⃣ *Transferência*%0A%0A` +
-                           `_Após pagamento, envie o comprovativo para liberação da raspadinha._`;
+                           `_⚠️ Envie o comprovativo para liberação da raspadinha._%0A` +
+                           `_⏱️ Entrega em 5-10 minutos após confirmação._`;
             
-            // Número do WhatsApp (substituir pelo número real)
-            const whatsappNumber = "258858867098";
-            
-            // URL do WhatsApp
             const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
             
-            // Mostrar loading SOMENTE quando clicar no WhatsApp
-            // Abrir WhatsApp imediatamente
+            // Fechar modal
+            processingModal.style.display = 'none';
+            
+            // Abrir WhatsApp
             window.open(whatsappURL, '_blank');
             
-            // Mostrar loading após abrir WhatsApp
-            submitBtn.classList.add('hidden');
-            loadingDiv.classList.remove('hidden');
-            loadingDiv.style.display = 'block';
+            // Registrar pedido no histórico
+            saveToHistory(phone, amount, operator, reference);
             
-            // Esconder loading após 2 segundos
-            setTimeout(() => {
-                loadingDiv.style.display = 'none';
-                submitBtn.classList.remove('hidden');
-                
-                // Resetar formulário
-                rechargeForm.reset();
-                amountOptions.forEach(opt => opt.classList.remove('active'));
-                selectedAmount = '';
-                amountInput.value = '';
-                phoneInput.value = '';
-                phoneInput.classList.remove('error', 'success');
-                phoneError.style.display = 'none';
-                amountError.style.display = 'none';
-                
-                // Selecionar valor padrão novamente
-                amountOptions[0].click();
-                
-                // Desabilitar botão novamente
-                submitBtn.disabled = true;
-                
-                // Mostrar notificação
-                showNotification('WhatsApp aberto! Complete seu pedido lá.');
-                
-                // Salvar histórico (opcional)
-                const history = JSON.parse(localStorage.getItem('vodapremios_history') || '[]');
-                history.unshift({
-                    phone: formattedPhone,
-                    amount: amount,
-                    date: new Date().toISOString(),
-                    reference: reference
-                });
-                localStorage.setItem('vodapremios_history', JSON.stringify(history.slice(0, 10)));
-                
-            }, 2000);
-        });
+            // Mostrar confirmação
+            showNotification('WhatsApp aberto Complete seu pedido. Boa sorte', 'success');
+            
+            // Resetar formulário
+            resetForm();
+            
+            // Adicionar anúncio do novo pedido
+            addNewOrderAnnouncement(amount, reference);
+        }
         
-        // Inicialização
-        document.addEventListener('DOMContentLoaded', function() {
-            // Selecionar valor padrão
-            amountOptions[0].click();
+        // Salvar no histórico
+        function saveToHistory(phone, amount, operator, reference) {
+            const history = JSON.parse(localStorage.getItem('vodapremios_history') || '[]');
+            history.unshift({
+                phone: phone,
+                amount: amount,
+                operator: operator,
+                reference: reference,
+                date: new Date().toISOString(),
+                status: 'pending'
+            });
+            localStorage.setItem('vodapremios_history', JSON.stringify(history.slice(0, 20)));
+        }
+        
+        // Adicionar anúncio de novo pedido
+        function addNewOrderAnnouncement(amount, reference) {
+            const newAnnouncement = {
+                icon: 'shopping-cart',
+                text: `Novo pedido <span class="announcement-amount">${amount} MT</span> (Ref: ${reference})`,
+                time: 'Agora mesmo'
+            };
             
-            // Desabilitar botão inicialmente
+            announcementsData.unshift(newAnnouncement);
+            
+            const announcementsList = document.getElementById('announcementsList');
+            const announcementElement = document.createElement('div');
+            announcementElement.className = 'announcement-item active';
+            announcementElement.id = `announcement-new`;
+            
+            announcementElement.innerHTML = `
+                <div class="announcement-content">
+                    <i class="fas fa-${newAnnouncement.icon} announcement-icon"></i>
+                    <div class="announcement-text">
+                        <div>${newAnnouncement.text}</div>
+                        <small>${newAnnouncement.time}</small>
+                    </div>
+                </div>
+            `;
+            
+            announcementsList.insertBefore(announcementElement, announcementsList.firstChild);
+            
+            // Remover após 10 segundos
+            setTimeout(() => {
+                if (announcementElement.parentNode) {
+                    announcementElement.remove();
+                }
+            }, 10000);
+        }
+        
+        // Resetar formulário
+        function resetForm() {
+            rechargeForm.reset();
+            amountOptions.forEach(opt => opt.classList.remove('active'));
+            selectedAmount = '';
+            amountInput.value = '';
+            phoneInput.value = '';
+            phoneInput.classList.remove('error', 'success');
+            phoneError.style.display = 'none';
+            amountError.style.display = 'none';
             submitBtn.disabled = true;
             
-            // Esconder loading (garantir que está escondido)
-            loadingDiv.style.display = 'none';
-            loadingDiv.classList.add('hidden');
+            // Selecionar valor padrão
+            setTimeout(() => {
+                amountOptions[0].click();
+            }, 500);
+        }
+        
+        // ==============================
+        // INICIALIZAÇÃO
+        // ==============================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Iniciar sistemas
+            goToSlide(0);
+            startCarousel();
+            updateTimer();
+            initAnnouncements();
             
-            // Efeito de entrada nos elementos
-            const elements = document.querySelectorAll('.form-group, .info-card');
+            // Configurar formulário
+            amountOptions[0].click();
+            submitBtn.disabled = true;
+            
+            // Efeito de entrada
+            const elements = document.querySelectorAll('.form-group, .info-card, .prize-mini-card');
             elements.forEach((el, i) => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(20px)';
@@ -872,6 +1718,17 @@
                     el.style.transform = 'translateY(0)';
                 }, 100 + (i * 100));
             });
+            
+            // Mensagem de boas-vindas
+            setTimeout(() => {
+                showNotification('Bem-vindo Prêmios até 50.000 MT esperando por você', 'success');
+            }, 1000);
+            
+            // Mostrar contador de usuários online
+            setInterval(() => {
+                const onlineUsers = Math.floor(Math.random() * 50) + 30;
+                document.querySelector('.live-badge').textContent = `${onlineUsers} ONLINE`;
+            }, 10000);
         });
     </script>
 </body>
